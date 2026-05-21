@@ -1,13 +1,19 @@
-app = 'agentkernel'
+# fly.toml app configuration file generated for agentkernel-damp-paper-7373 on 2026-05-21T13:58:24Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'agentkernel-damp-paper-7373'
+primary_region = 'iad'
 
 [build]
   dockerfile = 'Dockerfile'
 
 [env]
-  PROTOCOL = 'openai'
-  MODEL = 'deepseek-chat'
   BASE_URL = 'https://api.deepseek.com'
   DATA_DIR = '/tmp/.aicore'
+  MODEL = 'deepseek-chat'
+  PROTOCOL = 'openai'
 
 [http_service]
   internal_port = 8080
@@ -20,3 +26,9 @@ app = 'agentkernel'
     type = 'connections'
     hard_limit = 100
     soft_limit = 50
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 256
